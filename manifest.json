@@ -1,0 +1,16 @@
+{
+  "manifest_version": 1,
+
+  "name": "Watsch",
+  "description": "Does nothing",
+  "version": "0.0",
+
+  "page_action": {},
+
+  "content_scripts": [
+    {
+      "matches": ["https://quest.pecs.uwaterloo.ca/*"],
+      "js": ["export.js"]
+    }
+  ]
+}
