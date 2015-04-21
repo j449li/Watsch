@@ -22,7 +22,10 @@ function showPageAction() {
 	    killPolling();
 
 	    console.log("command sent");
-	    chrome.runtime.sendMessage({command: "show-page-action"});
+	    chrome.pageAction.show(1);
+	    // chrome.runtime.sendMessage({command: "show-page-action"}, function(response) {
+	    // 	console.log(response.msg);
+	    // });
 	}
 }
 
