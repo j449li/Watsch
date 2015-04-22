@@ -21,7 +21,7 @@
     "content_scripts": [
         {
             "matches": ["https://quest.pecs.uwaterloo.ca/*"],
-            "js": ["export.js"],
+            "js": ["content.js"],
             "all_frames": true
         }
     ],
