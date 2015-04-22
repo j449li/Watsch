@@ -22,7 +22,9 @@ function showPageAction() {
 	    killPolling();
 
 	    console.log("command sent");
-	    chrome.runtime.sendMessage({command: "show-page-action"});
+	    chrome.runtime.sendMessage({showPageAction: true}, function(response) {
+	    	console.log(response);
+	    });
 	}
 }
 
@@ -38,5 +40,3 @@ if (isOnSelectTerm()) {
 }
 
 showPageAction();
-
-
