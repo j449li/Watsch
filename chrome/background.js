@@ -8,10 +8,10 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
         );
     } else if (request.hidePageAction) {
         chrome.tabs.query(
-        	{currentWindow: true, active : true},
+            {currentWindow: true, active : true},
             function(tabArray) {
-        	    chrome.pageAction.hide(tabArray[0].id);
-	        }
+                chrome.pageAction.hide(tabArray[0].id);
+            }
         );
     }
 });
