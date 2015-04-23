@@ -14,14 +14,14 @@
     },
 
     "background": {
-        "scripts": ["background.js"],
+        "scripts": ["scripts/jquery-2.1.3.min.js", "scripts/background.js"],
         "persistent": false
     },
 
     "content_scripts": [
         {
             "matches": ["https://quest.pecs.uwaterloo.ca/*"],
-            "js": ["content.js"],
+            "js": ["scripts/content.js"],
             "all_frames": true
         }
     ],

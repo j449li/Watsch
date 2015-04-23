@@ -50,6 +50,23 @@ function pollState() {
     }
 }
 
+function getScheduleText() {
+	var texts = "";
+	if (getActionState() == ActionStates.SHOW) {
+		var courseTableElement = document.getElementById("ACE_STDNT_ENRL_SSV2$0");
+
+		if (courseTableElement != null) {
+			texts = courseTableElement.textContent.replace(/\r?\n{2,}|\r/g, "\n");
+		}
+
+		console.log(texts);
+
+		//chrome.runtime.sendMessage({exportSchedule: true, mData: texts});
+	}
+
+	return texts;
+}
+
 ActionStates = {
     SHOW : 1,
     HIDE : 2,
