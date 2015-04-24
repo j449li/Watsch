@@ -7,10 +7,10 @@ function killPolling() {
 
 function setPageActionVisibility(visible) {
     if (isPageActionVisible && !visible) {
-    	console.log("pageAction is hidden");
+    	//console.log("pageAction is hidden");
     	chrome.runtime.sendMessage({hidePageAction: true});
     } else if (!isPageActionVisible && visible) {
-    	console.log("pageAction is visible");
+    	//console.log("pageAction is visible");
     	chrome.runtime.sendMessage({showPageAction: true});
     }
     isPageActionVisible = visible;

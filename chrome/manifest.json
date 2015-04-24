@@ -1,6 +1,6 @@
 {
     "name": "Watsch",
-    "description": "Does nothing",
+    "description": "Chrome extension for Quest Schedule Exporter",
     "version": "0.5",
     "icons": { 
         "128": "images/icon.png"
@@ -25,6 +25,10 @@
             "js": ["scripts/content.js"],
             "all_frames": true
         }
+    ],
+
+    "permissions": [
+        "http://schedule.wattools.com/"
     ],
 
     "manifest_version": 2
