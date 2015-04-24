@@ -19,8 +19,10 @@ function setPageActionVisibility(visible) {
 function getActionState() {
     var titleEle = document.getElementById("DERIVED_REGFRM1_SS_TRANSACT_TITLE");
     var listRadioBtn = document.getElementById("DERIVED_REGFRM1_SSR_SCHED_FORMAT$258$");
+    var calOnlyButton = document.getElementById("DERIVED_CLASS_S_SSR_PREV_WEEK");
 
-    if (titleEle != null && listRadioBtn != null
+    if (titleEle != null && listRadioBtn != null 
+            && calOnlyButton == null
             && titleEle.textContent == "My Class Schedule"
             && listRadioBtn.checked) {
         return ActionStates.SHOW;
@@ -36,15 +38,12 @@ function getActionState() {
 function pollState() {
     switch(getActionState()) {
         case ActionStates.SHOW:
-            console.log("SHOW");
             setPageActionVisibility(true);
             break;
         case ActionStates.HIDE:
-            console.log("HIDE");
             setPageActionVisibility(false);
             break;
         case ActionStates.GONE:
-            console.log("GONE");
             killPolling();
             break;
     }
@@ -58,14 +57,17 @@ function getScheduleText() {
 		if (courseTableElement != null) {
 			texts = courseTableElement.textContent.replace(/\r?\n{2,}|\r/g, "\n");
 		}
-
-		console.log(texts);
-
-		//chrome.runtime.sendMessage({exportSchedule: true, mData: texts});
+		//console.log(texts);
 	}
 
 	return texts;
 }
+
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+    if (request.getScheduleText) {
+        sendResponse({scheduleText: getScheduleText()});
+    }
+});
 
 ActionStates = {
     SHOW : 1,
@@ -79,5 +81,5 @@ var isPageActionVisible = false;
 // Always hide it onload
 chrome.runtime.sendMessage({hidePageAction: true});
 if (getActionState() != ActionStates.GONE) {
-    polling = setInterval(pollState, 500);
+    polling = setInterval(pollState, 200);
 }
