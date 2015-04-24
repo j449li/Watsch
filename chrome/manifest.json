@@ -3,14 +3,14 @@
     "description": "Chrome extension for Quest Schedule Exporter",
     "version": "0.5",
     "icons": { 
-        "128": "images/icon.png"
+        "128": "images/icon128.png"
     },
 
     "minimum_chrome_version": "26",
 
     "page_action": {
         "default_title": "Export your schedule",
-        "default_icon": "images/icon.png",
+        "default_icon": "images/icon128.png",
         "default_popup": "popup.html"
     },
 
