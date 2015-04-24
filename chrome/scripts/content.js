@@ -64,7 +64,7 @@ function getScheduleText() {
 }
 
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
-    if (request.getScheduleText) {
+    if (request.getScheduleText && schedule_frame != null) {
         sendResponse({scheduleText: getScheduleText()});
         return true;
     }
@@ -78,6 +78,7 @@ ActionStates = {
 
 var polling;
 var isPageActionVisible = false;
+var schedule_frame = document.getElementById("ptifrmtgtframe");
 
 // Always hide it onload
 chrome.runtime.sendMessage({hidePageAction: true});
