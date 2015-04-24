@@ -50,17 +50,17 @@ function pollState() {
 }
 
 function getScheduleText() {
-	var texts = "";
-	if (getActionState() == ActionStates.SHOW) {
-		var courseTableElement = document.getElementById("ACE_STDNT_ENRL_SSV2$0");
+    var texts = "";
+    if (getActionState() == ActionStates.SHOW) {
+        var courseTableElement = document.getElementById("ACE_STDNT_ENRL_SSV2$0");
 
-		if (courseTableElement != null) {
-			texts = courseTableElement.textContent.replace(/\r?\n{2,}|\r/g, "\n");
-		}
-		//console.log(texts);
-	}
+        if (courseTableElement != null) {
+            texts = courseTableElement.textContent.replace(/\r?\n{2,}|\r/g, "\n");
+        }
+        //console.log(texts);
+    }
 
-	return texts;
+    return texts;
 }
 
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {

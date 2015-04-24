@@ -4,33 +4,33 @@ function removeU00A0(str) {
 }
 
 function downloadFile(data) {
-	var icsFile = new Blob([data], {type: 'text/plain'});
-	var fileUrl = window.URL.createObjectURL(icsFile);
+    var icsFile = new Blob([data], {type: 'text/plain'});
+    var fileUrl = window.URL.createObjectURL(icsFile);
 
-	var invLink = document.getElementById("invLink");
-	invLink.href = fileUrl;
-	invLink.click();
-	window.close();
+    var invLink = document.getElementById("invLink");
+    invLink.href = fileUrl;
+    invLink.click();
+    window.close();
 }
 
 function responseCallback(response) {
-	if (response.scheduleText) {
-		var text = removeU00A0(response.scheduleText);
-	    //console.log(text);
-	    $.post(API_URL, {data: text})
-	        .done(function(data) {
-	            console.log(data);
-	            downloadFile(data);
-	        });
-	}
+    if (response.scheduleText) {
+        var text = removeU00A0(response.scheduleText);
+        //console.log(text);
+        $.post(API_URL, {data: text})
+            .done(function(data) {
+                console.log(data);
+                downloadFile(data);
+            });
+    }
 }
 
 function exportSchedule() {
-	chrome.tabs.query(
+    chrome.tabs.query(
         {currentWindow: true, active : true},
         function(tabArray) {
-            chrome.tabs.sendMessage(
-            	    tabArray[0].id,
+        chrome.tabs.sendMessage(
+                    tabArray[0].id,
             	    {getScheduleText: true},
             	    responseCallback);
         }
