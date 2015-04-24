@@ -66,6 +66,7 @@ function getScheduleText() {
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     if (request.getScheduleText) {
         sendResponse({scheduleText: getScheduleText()});
+        return true;
     }
 });
 
